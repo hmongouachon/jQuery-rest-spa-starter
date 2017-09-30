@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "authors": [
+    "",
+    ""
+  ],
+  "description": "",
+  "main": "index.php",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/vendors",
+    "temp",
+    "resources/css",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+   
+  },
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "devDependencies": {
+    
+  }
+}

@@ -1,0 +1,668 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+
+/* -----------------------------
+   variables
+-------------------------------*/
+
+/* colors shemes*/
+$black : #000000;
+$white : #ffffff;
+$red : #f48080;
+$red2 : #ef503b;
+
+
+/* size */
+$fullSize : 100%; 
+
+
+
+/* -----------------------------
+   mixins
+-------------------------------*/
+
+
+
+/* border radius */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/*  transitions   */
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+
+/*  generic transform */
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+/*  rotate */
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+ 
+/*  scale */
+@mixin scale($scale) {
+   @include transform(scale($scale));
+} 
+
+/*  translate */
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+
+/*  skew */
+@mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+/*  transform origin */
+@mixin transform-origin ($x, $y) {
+    moz-transform-origin: $x, $y;
+       -o-transform-origin: $x, $y;
+      -ms-transform-origin: $x, $y;
+  -webkit-transform-origin: $x, $y;
+          transform-origin: $x, $y;
+}
+
+
+/* use it : @include transition(background-color 1s .5s, color 2s);  */
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ----------------------------
+
+   main content styles 
+
+--------------------------- */
+
+
+html {overflow: -moz-scrollbars-vertical;  -webkit-backface-visibility: hidden; overflow-y: visible; /* -webkit-transform: translateZ(0); overflow-y: hidden; */}
+body, html { -ms-text-size-adjust:100%;-webkit-text-size-adjust:100%; background-color: #ffffff;}
+body {font:400 13px/1.6 'Roboto', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;}
+#main {/*overflow: hidden;*/ }
+
+/* ----------------------------
+
+   Typography 
+
+--------------------------- */
+
+
+body, h1, h2, h3, h4, h5, h6, select, textarea, span {  }
+h1 {}
+h2 {  }
+h3 { }
+h4 { }
+h5 { }
+p {}
+ul, ol { }
+img {width : 100%;} ul, li {margin:0; padding:0;}
+ul li, a {  -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;}
+a {text-decoration:none; outline: none;  }
+
+/* ----------------------------
+
+   Helpers 
+
+--------------------------- */
+
+*, *:after, *:before {-moz-box-sizing:border-box; box-sizing:border-box; -webkit-font-smoothing:antialiased; font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+
+/* others */
+.separator {float:left; width:100%; height:1px; background-color:#cccccc; margin:20px 0} 
+::-moz-selection { background: #fb6666; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+img { -ms-interpolation-mode: bicubic; } /* IE7 hack scale img */
+svg:not(:root) { overflow: hidden; } /* IE9 hack svg */
+
+/* images */
+.cover {background-position:center;  -moz-background-size:cover;-o-background-size:cover;-webkit-background-size:cover;background-size:cover;}
+
+/* elements */
+.full-size { height : 100%; width : 100%; position: absolute; top : 0; left : 0;}
+
+
+
+/* -----------------------------
+   
+  transitions variables
+
+-------------------------------*/
+
+/* letterz */
+$duration-1 : 0.8s; 
+$duration-2 : 0.9s; 
+$duration-3 : 1.15s; 
+$duration-4 : 1.35s; 
+
+/* easing */
+$easing-1 : cubic-bezier(.62,.01,.16,1); 
+$easing-2 : cubic-bezier(.52,.01,.16,1); 
+$easing-3 : cubic-bezier(0.7,0,0.3,1);
+
+/* ui elements */
+$duration-supfast : 0.3s;
+$duration-fast : 0.6s; 
+$duration-medium : 1.2s;
+$duration-slow : 3s;
+
+
+/* ----------------------------
+
+   header
+
+--------------------------- */
+
+
+header { 
+
+  position: absolute;
+  z-index: 2;
+  right: 7vw;
+  top:4vh;
+
+  nav {
+
+    a {
+
+      opacity: 0;
+
+      color: #686868;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-left: 14px;
+
+      &.active {
+        width: 100vw;  
+        opacity: 1;
+      }
+      
+    }
+  }
+  
+ 
+}
+
+ 
+/* ----------------------------
+
+  Loader
+
+--------------------------- */
+
+#loader {
+
+  @include transition(opacity $duration-fast $easing-3); 
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+
+  .percent {
+    
+    
+    font-size: 4em;
+    font-weight: bold;
+    margin-top: calc(50vh);
+    margin-left: 10vw;
+
+    
+    
+  }
+
+  /* lines */
+      .progress-line {
+        position : absolute;  
+        opacity: 1; 
+        left : calc(50vw); 
+        bottom:calc(50vh - 110px);   
+        width: 22px; 
+        overflow: hidden; 
+        opacity: 1;
+        @include transition(all $duration-fast $easing-3); 
+        @include transform(translate(0,0));
+
+        &.hide {
+          opacity: 0;
+          @include transform(translate(0,-10px));
+        }
+
+        span {
+          @include transition(width $duration-fast $easing-3); 
+          width: 0; 
+          height : 1px; 
+          background-color:#464646; 
+          display: block;
+
+          &.animate { 
+            width : 100%; 
+            margin-left: 0;
+          }
+        }
+
+      } 
+
+
+
+}
+
+
+/* ----------------------------
+
+  Sections
+
+--------------------------- */
+
+.section { 
+
+  @include transition(width $duration-fast $easing-3);
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  left:0;
+  top: 0;
+  width: 0;
+  height: 100vh;
+  z-index: 0;
+
+  &.active {
+    width: 100vw;  
+    z-index: 1;
+  }
+
+  .wrapper {
+    @include transform(translate(0,0));
+    @include transition(opacity $duration-fast $easing-3);
+    opacity: 0;
+    padding: 40px;
+
+    &.active {
+      @include transform(translate(0,0));
+      opacity: 1;
+    }
+
+  }
+
+
+  /** Specific css for sections content **/
+
+  &.home {
+
+    background-color: #000000;
+
+    h2 {
+
+      color: #464646;
+      font-size: 4em;
+      font-weight: bold;
+      margin-top: calc(50vh);
+      margin-left: 10vw;
+      margin-bottom: 20px;
+    }
+
+    a {
+      margin-left: 10vw;
+      color: #ffffff;
+      letter-spacing: 1px;
+      font-size: 0.9em;
+    }
+
+
+  }
+
+  &.about {
+
+    background-color: #222222;
+
+    h2 {
+
+      color: #464646;
+      font-size: 4em;
+      font-weight: bold;
+      margin-top: calc(50vh);
+      margin-left: 10vw;
+      margin-bottom: 20px;
+
+    }
+
+    a {
+      margin-left: 10vw;
+      color: #ffffff;
+      letter-spacing: 1px;
+      font-size: 0.9em;
+    }
+    
+  }
+
+  &.projects {
+
+    background-color: #ffffff;
+
+
+    h2 {
+
+      font-size: 4em;
+      margin-bottom: 40px;
+    }
+
+    h3 { 
+
+      font-size: 1.1em;
+      /*text-transform:capitalize;*/
+
+    }
+
+    figure {
+
+      display: block;
+      width: 100%;
+      height: 180px;
+      margin-bottom: 40px;
+      margin-left: 0;
+      background-color: #f9f9f9;
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+/* ----------------------------
+
+   Footer
+
+--------------------------- */
+
+footer {}
+
+
+
+
+   /* 
+----------------------------------------------------------------
+ Mobile
+ ---------------------------------------------------------------
+ */
+ 
+ @media only screen and (max-width:768px) {
+  
+ }
+ @media only screen and (min-width:768px) {
+   
+ }
+
+
+
+ /* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+}
+ 
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+/* Styles */
+}
+ 
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+/* Styles */
+
+}
+@media only screen
+and (max-width : 480px) {
+
+}
+@media only screen
+and (max-width : 768px) {
+}
+
+@media only screen
+and (max-width : 960x) {
+
+/*header.open  { width : calc(100% - 80); }*/
+}
+
+@media only screen
+and (max-width : 1140px) {
+
+}
+
+@media only screen
+and (max-width : 1180px) {
+  /* style for agence page 1 */
+
+
+}
+
+
+ 
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+/* Styles */
+}
+ 
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+/* Styles */
+}
+ 
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+/* Styles */
+}
+ 
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+/* Styles */
+}
+ 
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+/* Styles */
+}
+ 
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+
+
+@media print {
+  img { max-width: 100% !important; }
+}
+@media print {
+  p, h2, h3 { orphans: 3; widows: 3; }
+}
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
