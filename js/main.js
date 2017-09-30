@@ -214,7 +214,7 @@
 
                      setTimeout(function() {
                          app.transitions.show_home();
-                     }, 1200);
+                     }, 1500);
                  }
 
              } else {
@@ -225,7 +225,7 @@
 
                      setTimeout(function() {
                          app.transitions.show_page(section_name);
-                     }, 1200);
+                     }, 1500);
 
                  }
              }
