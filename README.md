@@ -2,7 +2,7 @@
 
 - Based on html5 boilerplate [https://html5boilerplate.com/]. 
 - Responsive using Imperavi Kube css library
-- Js code use IIFE method with some pre-built functions like : route / page transitions
+- Js code use jQuery with IIFE method and some pre-built functions like : route / page transitions
 - Optimized for api rest calls 
 - Dynamic content is compiled with handlebar.js
 
@@ -24,10 +24,6 @@
 
 ## CODE STRUCTURE
 
-### Managed folders and files
-
-- resources/css/
-- js/vendors/
 
 ### Application structure
 
