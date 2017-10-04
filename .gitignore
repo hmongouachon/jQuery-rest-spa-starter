@@ -81,7 +81,7 @@ vendors/
 temp/
 test/
 tests/
-resources/css/*
-resources/img/*
 
+
+### Nodes modules ###
 node_modules/
